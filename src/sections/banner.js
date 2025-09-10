@@ -8,17 +8,19 @@ export default function Banner() {
       <Container sx={styles.banner.container}>
         <Box sx={styles.banner.contentBox}>
           <Heading as="h1" variant="heroPrimary">
-            Top Quality Digital Products To Explore
+            Vishvaguru Global Enterprises Ltd
           </Heading>
           <Text as="p" variant="heroSecondary">
-            Get your blood tests delivered at let home collect sample from the
-            victory of the managements that supplies best design system
-            guidelines ever.
+            A diversified global business group with interests spanning 
+            healthcare, dental clinics, textiles, technology, and more. 
+            We are committed to innovation, excellence, and creating 
+            sustainable value across industries and communities worldwide.
           </Text>
-          <Button variant="primary">Explore</Button>
+          <Button variant="primary">Discover Our Businesses</Button>
         </Box>
 
         <Box sx={styles.banner.imageBox}>
+          {/* Logo or Hero Illustration will go here later */}
         </Box>
       </Container>
     </Box>
@@ -81,3 +83,4 @@ const styles = {
     },
   },
 };
+
