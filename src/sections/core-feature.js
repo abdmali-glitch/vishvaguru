@@ -1,61 +1,75 @@
-import { Container, Box } from 'theme-ui';
-import TextFeature from '../components/text-feature';
-import Image from '../components/image';
-import shapePattern from '../assets/shape-pattern2.png';
-
-// Replace with real images later
-import ManufacturingImg from '../assets/manufacturing.png';
-import HealthcareImg from '../assets/healthcare.png';
-import EcommerceImg from '../assets/ecommerce.png';
-import CallCenterImg from '../assets/callcenter.png';
+import React from 'react';
+import { Container, Box, Heading, Text, Button } from 'theme-ui';
+import { FaIndustry, FaHospital, FaShoppingCart, FaHeadset } from 'react-icons/fa';
 
 const features = [
   {
-    subTitle: 'Manufacturing',
-    title: 'World-Class Manufacturing & Textiles',
+    id: 'manufacturing',
+    title: 'Manufacturing',
+    subtitle: 'World-Class Manufacturing & Textiles',
     description:
-      'Our manufacturing and textile divisions deliver high-quality products trusted by global markets. We combine innovation with sustainability to drive growth across industries.',
-    img: ManufacturingImg,
+      'Our manufacturing and textile divisions deliver high-quality products to global markets. We combine innovation with sustainability to drive growth across industries.',
+    icon: <FaIndustry size={64} />,
+    cta: '#manufacturing',
   },
   {
-    subTitle: 'Healthcare',
-    title: 'Healthcare & Dental Excellence',
+    id: 'healthcare',
+    title: 'Healthcare & Dental',
+    subtitle: 'Clinical Excellence & Patient Care',
     description:
-      'With facilities like Cromwell Dental Place in the UK, we provide outstanding healthcare services focused on patient care, advanced treatments, and global standards.',
-    img: HealthcareImg,
+      'Home to Cromwell Dental Place in the UK and other healthcare initiatives, we deliver clinical excellence and compassionate patient care using modern standards and technologies.',
+    icon: <FaHospital size={64} />,
+    cta: '#healthcare',
   },
   {
-    subTitle: 'E-Commerce',
-    title: 'Expanding E-Commerce Solutions',
+    id: 'ecommerce',
+    title: 'E-Commerce',
+    subtitle: 'Global E-Commerce Solutions',
     description:
-      'Our e-commerce ventures make global shopping easier, connecting products, businesses, and customers with reliable platforms and services.',
-    img: EcommerceImg,
+      'Our e-commerce platforms connect products to customers across borders, backed by reliable logistics and customer-first operations.',
+    icon: <FaShoppingCart size={64} />,
+    cta: '#ecommerce',
   },
   {
-    subTitle: 'Call Center & BPO',
-    title: 'Customer Support & Outsourcing',
+    id: 'callcenter',
+    title: 'Call Center & BPO',
+    subtitle: 'Customer Support & Outsourcing',
     description:
-      'We operate call centers and BPO services that provide multilingual support, customer engagement, and outsourcing solutions to international clients.',
-    img: CallCenterImg,
+      'We operate multilingual contact centers and BPO services providing customer engagement, technical support, and outsourcing for international clients.',
+    icon: <FaHeadset size={64} />,
+    cta: '#callcenter',
   },
 ];
 
 export default function CoreFeature() {
   return (
-    <Box as="section" sx={{ variant: 'section.coreFeature' }}>
-      {features.map((feature, index) => (
-        <Container sx={styles.containerBox} key={index}>
-          <Box sx={styles.contentBox}>
-            <TextFeature
-              subTitle={feature.subTitle}
-              title={feature.title}
-              description={feature.description}
-            />
-          </Box>
-          <Box sx={styles.thumbnail}>
-            <Image src={feature.img} alt={feature.subTitle} />
-            <Box sx={styles.shapeBox}>
-              <Image src={shapePattern} alt="Shape" />
+    <Box as="section" sx={{ variant: 'section.coreFeature', py: [4, 5, 6] }}>
+      {features.map((f, idx) => (
+        <Container key={f.id} sx={styles.container}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexDirection: ['column', idx % 2 === 0 ? 'row' : 'row-reverse'],
+              width: '100%',
+            }}
+          >
+            {/* Icon column */}
+            <Box sx={styles.iconBox}>{f.icon}</Box>
+
+            {/* Text column */}
+            <Box sx={styles.contentBox}>
+              <Text sx={styles.subTitle}>{f.title}</Text>
+              <Heading as="h3" sx={styles.title}>
+                {f.subtitle}
+              </Heading>
+              <Text as="p" sx={styles.description}>
+                {f.description}
+              </Text>
+              <Button as="a" href={f.cta} variant="primary" sx={{ mt: 3 }}>
+                Learn more
+              </Button>
             </Box>
           </Box>
         </Container>
@@ -65,42 +79,43 @@ export default function CoreFeature() {
 }
 
 const styles = {
-  containerBox: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexWrap: ['wrap', null, null, 'nowrap'],
-    pb: [5, 7],
+  container: {
+    px: [3, 4, 5],
+    py: [4, 5],
+    maxWidth: 1200,
+    width: '100%',
+  },
+  iconBox: {
+    width: ['100%', '40%'],
+    textAlign: 'center',
+    fontSize: [64, 80], // icon size scales with screen
+    color: 'primary',
+    mb: [3, 0],
   },
   contentBox: {
-    flexShrink: 0,
-    px: [0, null, '30px', 0],
-    textAlign: ['center', null, null, 'left'],
-    width: ['100%', '80%', null, 340, 400, 430, null, 485],
-    pb: ['40px', '60px', null, 0],
-    mx: ['auto', null, null, 0],
-    '.description': {
-      pr: [0, null, 6, 7, 6],
-    },
+    width: ['100%', '55%'],
+    textAlign: ['center', 'left'],
+    px: [0, 3],
+    py: [3, 0],
   },
-  thumbnail: {
-    display: 'inline-flex',
-    position: 'relative',
-    mr: 'auto',
-    ml: ['auto', null, null, null, 7],
-    '> img': {
-      position: 'relative',
-      zIndex: 1,
-      height: [280, 'auto'],
-    },
+  subTitle: {
+    fontSize: 1,
+    fontWeight: 700,
+    color: 'primary',
+    mb: 2,
+    textTransform: 'uppercase',
+    letterSpacing: '0.08em',
   },
-  shapeBox: {
-    position: 'absolute',
-    bottom: -50,
-    right: -120,
-    zIndex: -1,
-    display: ['none', 'inline-block'],
+  title: {
+    fontSize: [3, 4],
+    mb: 3,
+  },
+  description: {
+    fontSize: 2,
+    lineHeight: 1.8,
+    color: 'text',
   },
 };
+
 
 
