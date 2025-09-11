@@ -1,43 +1,40 @@
 import { Box, Container, Grid } from 'theme-ui';
 import SectionHeader from '../components/section-header';
 import FeatureCardColumn from 'components/feature-card-column.js';
-import Performance from 'assets/key-feature/performance.svg';
-import Partnership from 'assets/key-feature/partnership.svg';
-import Subscription from 'assets/key-feature/subscription.svg';
-import Support from 'assets/key-feature/support.svg';
+import { FaGlobe, FaChartLine, FaLeaf, FaHandshake } from 'react-icons/fa';
 
 const data = [
   {
     id: 1,
-    imgSrc: Performance,
-    altText: 'Fast Performance',
-    title: 'Fast Performance',
+    icon: <FaGlobe size={48} />,
+    altText: 'Global Presence',
+    title: 'Global Presence',
     text:
-      'Get your blood tests delivered at home collect a sample from the your blood tests.',
+      'Operations across multiple countries with businesses in healthcare, textiles, e-commerce, and more — connecting opportunities worldwide.',
   },
   {
     id: 2,
-    imgSrc: Partnership,
-    altText: 'Partnership deal',
-    title: 'Partnership deal',
+    icon: <FaChartLine size={48} />,
+    altText: 'Sustainable Growth',
+    title: 'Sustainable Growth',
     text:
-      'Get your blood tests delivered at home collect a sample from the your blood tests.',
+      'A strong track record of long-term value creation, with a focus on scalable and future-ready businesses that attract global investors.',
   },
   {
     id: 3,
-    imgSrc: Subscription,
-    altText: 'Pro Subscription',
-    title: 'Pro Subscription',
+    icon: <FaLeaf size={48} />,
+    altText: 'Innovation & Responsibility',
+    title: 'Innovation & Responsibility',
     text:
-      'Get your blood tests delivered at home collect a sample from the your blood tests.',
+      'We combine innovation with social and environmental responsibility, ensuring our ventures positively impact communities and industries.',
   },
   {
     id: 4,
-    imgSrc: Support,
-    altText: 'Customer Support',
-    title: 'Customer Support',
+    icon: <FaHandshake size={48} />,
+    altText: 'Trusted Partnerships',
+    title: 'Trusted Partnerships',
     text:
-      'Get your blood tests delivered at home collect a sample from the your blood tests.',
+      'Building strong alliances with global partners, investors, and teams, fostering trust and collaboration across industries.',
   },
 ];
 
@@ -46,18 +43,19 @@ export default function KeyFeature() {
     <Box sx={{ variant: 'section.keyFeature' }} id="feature">
       <Container>
         <SectionHeader
-          slogan="Whats the function"
-          title="Meet the feature of product"
+          slogan="Why Choose Vishvaguru Global Enterprises"
+          title="A trusted partner for growth, innovation, and global impact"
         />
 
         <Grid sx={styles.grid}>
           {data.map((item) => (
             <FeatureCardColumn
               key={item.id}
-              src={item.imgSrc}
+              src={null} // remove image prop since we’re using icons
               alt={item.altText}
               title={item.title}
               text={item.text}
+              icon={item.icon} // pass icons instead
             />
           ))}
         </Grid>
@@ -88,3 +86,4 @@ const styles = {
     ],
   },
 };
+
