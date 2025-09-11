@@ -29,9 +29,9 @@ const data = [
   {
     id: 3,
     imgSrc: PostThumb2,
-    altText: 'Startup',
+    altText: 'textile',
     postLink: '#',
-    title: 'Product Marketing: Startup Product Sales',
+    title: 'Product Marketing: Textile Product Sales',
     authorName: 'Cletus Dorian',
     date: 'Feb 21, 2022',
   },
